@@ -40,6 +40,7 @@
 </template>
 
 <script>
+let errorText,status
 export default {
 	data(){
 		return{
@@ -52,7 +53,6 @@ export default {
 	},
 	computed: {
 		userErrors(){
-			let errorText,status
 				if(!/[\u4e00-\u9fa5]/.test(this.username)){
 					 status=false
 					 errorText='必须输入中文'
@@ -70,7 +70,6 @@ export default {
 				}
 		},
 		pwdErrors(){
-			let errorText,status
 			if(!/^\d{6}$/.test(this.pwd)){
 				status=false
 				errorText= '必须输入6位数字'
@@ -88,7 +87,6 @@ export default {
 			}
 		},
 		confirmErrors(){
-			let errorText,status
 			if(this.pwd!=this.confirmpwd){
 				status=false
 				errorText= '两次密码不一致'
@@ -106,7 +104,6 @@ export default {
 			}
 		},
 		emialErrors(){
-			let errorText,status
 			if(!/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/.test(this.emial)){
 				status=false
 				errorText= '邮箱格式不正确'

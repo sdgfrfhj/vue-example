@@ -28,8 +28,7 @@
 
 <style scoped>
 div{width: 600px;margin: 0 auto;}
-div p{background-size: 200% 120%;background-image: -webkit-linear-gradient(left,#df21f5 , skyblue 10%, orange 40%, #000a80 75% , #df21f5);
--webkit-background-clip: text;-webkit-text-fill-color: transparent;animation: content-animation 4s linear infinite;}
+div p{background-size: 200% 120%;animation: content-animation 4s linear infinite;}
 
 @keyframes content-animation{
 	0{background-position: 0 0;}
