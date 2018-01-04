@@ -78,7 +78,6 @@ export default {
 			if (this.currPage !== 0) {
 				this.currPage--
 			}
-			console.log(this.currPage)
 		},
 		slideNext () {
 			if (this.currPage < Math.floor((this.content.list.length - 1))) {
@@ -88,9 +87,10 @@ export default {
 		evtMouseEnter (index, event) {
 			let $li = event.currentTarget
 			$li.parentNode.previousElementSibling.style.marginLeft = index * (-296) + 'px'
-			let cs = $li.parentElement.children
-			for (var i = 0; i < cs.length; i++) {
-				var csi = cs[i]
+			this.currPage = index
+			/* let cs = $li.parentElement.children
+			for (let i = 0; i < cs.length; i++) {
+				let csi = cs[i]
 				if (csi === $li) {
 					csi.classList.add('active')
 					this.currPage = index
@@ -98,8 +98,7 @@ export default {
 					csi.classList.remove('active')
 				}
 				console.log(csi)
-				console.log(this.currPage)
-			}
+			}*/
 		},
 		evtMouseLeave () {
 
