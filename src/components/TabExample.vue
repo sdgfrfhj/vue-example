@@ -13,51 +13,42 @@
 		<div v-show="curId===3">vue</div>
 	</div>
 	</div>-->
+			
 	<div id="tab">
 		<div class="tab-tit">
-			<a href="javascript:;" v-for="(list,index) in langs" :class="{'cur':list.active}" @mouseover="isOk(list,index)">{{list.name}}</a>
+			<a href="javascript:;" v-for="(list,index) in langs" @click="tab(index)" :class="{'cur':num == index}">{{list.name}}</a>
 		</div>
 		<div class="tab-con">
-            <div v-for="tab in cons" :class="{'active':tab.active}" :style="{ background: (tab.background) }">{{tab.name}}-{{tab.background}}</div>
-		</div>
-	</div>
+            <div class="fadeIn" v-for="(tab,index) in cons" v-show="num==index" :style="{ background: (tab.background) }">{{tab.name}}-{{tab.background}}</div>
+		</div>		
+	</div>	
 </template>
 	
 
 
-
 <script>
-import $ from '../../static/js/jquery-3.2.1.min.js'
-
 	export default{
 		data(){
 			return {
 				langs: [
-				{name:'html',active:true},
-				{name:'css',active:false},
-				{name:'javascript',active:false},
-				{name:'vue',active:false}
+				{name:'html'},
+				{name:'css'},
+				{name:'javascript'},
+				{name:'vue'}
 				],
 				cons: [
-				{name:'html',background:'antiquewhite',active:true},
-				{name:'css',background:'green',active:false},
-				{name:'javascript',background:'beige',active:false},
-				{name:'vue',background:'yellow',active:false}
-				]
+				{name:'html',background:'antiquewhite'},
+				{name:'css',background:'green'},
+				{name:'javascript',background:'beige'},
+				{name:'vue',background:'yellow'}
+				],
+				num: 1
 			}	
 		},
 		methods:{
-			isOk:function(list,index){
-				for(var i=0;i<this.langs.length;i++){
-					this.langs[i].active=false;
-					this.cons[i].active=false;    
-				}
-					this.langs[index].active=true;
-					this.cons[index].active=true;					
+			tab:function(index){
+				this.num = index				
 			}
-		},
-		mounted(){
-			//$(".tab-con div:first").show();
 		}
 	}
 	
@@ -94,9 +85,22 @@ import $ from '../../static/js/jquery-3.2.1.min.js'
     border: 1px solid #ccc;
     height: 400px;
     padding-top: 20px;
-    display: none;
 }
 .tab-con div.active{
 	display: block;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+.fadeIn {
+  -webkit-animation-name:fadeIn;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-duration:1s;
 }
 </style>
